@@ -12,7 +12,14 @@ const rideRoutes = require('./routes/ride.routes');
 
 connectToDb(); // CONNECT TO DB
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://yatra-ajxd2f0f7-debangshu19s-projects.vercel.app', // your frontend origin
+    credentials: true, // allow cookies to be sent
+};
+
+app.use(cors(corsOptions)); // Apply CORS to all routes
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
