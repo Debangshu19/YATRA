@@ -1,8 +1,8 @@
-Uber Clone Application
+YATRA Application
 
 Overview
 
-This project is an Uber Clone application that replicates the basic functionality of ride-hailing platforms. The application is built using modern web development technologies to provide a seamless user experience. The key features include user authentication, real-time ride booking, location-based services, and payment integration.
+This project is an application that replicates the basic functionality of ride-hailing platforms. The application is built using modern web development technologies to provide a seamless user experience. The key features include user authentication, real-time ride booking, location-based services, and payment integration.
 
 Features
 
@@ -34,12 +34,6 @@ Ride history and earnings tracking for drivers
 
 Booking history for riders
 
-Payment Integration
-
-Integration with Stripe for secure online payments
-
-Payment history and receipts
-
 Admin Panel
 
 Manage users, drivers, and rides
@@ -51,8 +45,6 @@ Technology Stack
 Frontend:
 
 React: For building the user interface
-
-Redux: State management
 
 Material UI: For modern and responsive design
 
@@ -69,21 +61,3 @@ Additional Tools and Services:
 Google Maps API: For geolocation and map features
 
 Socket.IO: For real-time communication
-
-Stripe API: For payment processing
-
-Folder Structure
-
-uber-clone/
-|── frontend/          # React application
-|    |── src/
-|         |── components/
-|         |── redux/
-|         |── utils/
-|         |── App.js
-|         |── index.js
-|── backend/           # Express server
-     |── models/
-     |── routes/
-     |── controllers/
-     |── app.js
