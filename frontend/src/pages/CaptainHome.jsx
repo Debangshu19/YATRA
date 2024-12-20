@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import {Link} from 'react-router-dom';
 import CaptainDetails from '../components/CaptainDetails';
 import RidePopUp from '../components/RidePopUp';
-import ConfirmRidePopUp from '../components/confirmRidePopUp';
+import ConfirmRidePopUp from '../components/ConfirmRidePopUp';
 import { useEffect, useContext } from 'react'
 import { SocketContext } from '../context/SocketContext'
 import { CaptainDataContext } from '../context/CaptainContext'
