@@ -13,7 +13,7 @@ const rideRoutes = require('./routes/ride.routes');
 connectToDb(); // CONNECT TO DB
 
 const corsOptions = {
-    origin: 'https://yatra-5ugh9b5x6-debangshu19s-projects.vercel.app', // New frontend URL
+    origin: 'https://yatra-ten.vercel.app', // New frontend URL
     credentials: true, // Allow cookies to be sent
 };
 
