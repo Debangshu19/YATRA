@@ -13,13 +13,13 @@ const rideRoutes = require('./routes/ride.routes');
 connectToDb(); // CONNECT TO DB
 
 const corsOptions = {
-    origin: 'https://yatra-ajxd2f0f7-debangshu19s-projects.vercel.app', // Frontend URL
-    credentials: true, // Allow cookies
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed custom headers
+    origin: 'https://yatra-5ugh9b5x6-debangshu19s-projects.vercel.app', // New frontend URL
+    credentials: true, // Allow cookies to be sent
 };
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Handle preflight
+
+app.use(cors(corsOptions)); // Apply CORS middleware
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
