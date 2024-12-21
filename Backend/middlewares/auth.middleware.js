@@ -7,12 +7,12 @@ const BlacklistTokenModel = require('../models/blacklistToken.model');
 module.exports.authUser = async (req, res, next) => {
     const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
     if (!token) {
-        return res.status(401).json({ message: 'One Unauthorized' });
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 
     const isBlacklisted = await BlacklistTokenModel.findOne({ token: token });
     if (isBlacklisted) {
-        return res.status(401).json({ message: 'Two Unauthorized' });
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 
     try {
@@ -20,13 +20,13 @@ module.exports.authUser = async (req, res, next) => {
         const user = await userModel.findById(decoded._id);
         
         if (!user) {
-            return res.status(401).json({ message: 'Third Unauthorized' });
+            return res.status(401).json({ message: 'Unauthorized' });
         }
 
         req.user = user;
         return next();
     } catch (err) {
-        return res.status(401).json({ message: 'Fourth Unauthorized' });
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 }
 
@@ -34,27 +34,32 @@ module.exports.authCaptain = async (req, res, next) => {
     const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
 
     if (!token) {
-        return res.status(401).json({ message: 'Fifth Unauthorized' });
+        console.log("No token provided");
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 
     const isBlacklisted = await BlacklistTokenModel.findOne({ token: token });
 
     if (isBlacklisted) {
-        return res.status(401).json({ message: 'Sixth Unauthorized' });
+        console.log("Token is blacklisted");
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Token decoded:", decoded);
         const captain = await captainModel.findById(decoded._id);
         
         if (!captain) {
-            return res.status(401).json({ message: 'Seventh Unauthorized' });
+            console.log("Captain not found");
+            return res.status(401).json({ message: 'Unauthorized' });
         }
 
         req.captain = captain;
+        console.log("Captain authenticated:", captain);
         return next();
     } catch (err) {
-        console.log(err);
-        return res.status(401).json({ message: 'Eight Unauthorized' });
+        console.log("Error during authentication:", err);
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 }
